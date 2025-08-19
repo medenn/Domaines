@@ -1,0 +1,238 @@
+﻿URL :http://localhost:8090/
+
+
+AUTH : POST : api/auth/login : {"username": "admin","password": "123"}
+
+
+roles:
+ADD : POST : /api/roles :{ "name": "ADMIN" }
+LIST : GET : /api/roles 
+UPDATE : PUT : /api/roles/{id} : { "name": "NOUVEAU_NOM_ROLE" }
+DELETE : DELETE : /api/roles/{id}
+
+users:
+ADD : POST : /api/users :{ "username": "admin", "password": "123", "roleNames": ["ADMIN", "USER"] }
+LIST : GET : /api/users 
+UPDATE : PUT : /api/users/{id} : { "username": "newusername", "password": "newpass", "roleNames": ["USER"] }
+DELETE : DELETE : /api/users/{id}
+
+
+permissions :
+ADD : POST : /api/permissions :{"name": "PERM_ADMIN","roles": "ADMIN","urlPattern": "/api/admin/**"}
+LIST : GET : /api/permissions
+UPDATE : PUT : /api/permissions/{id} :{"name": "PERM_ADMIN","roles": "ADMIN","urlPattern": "/api/admin/**"}
+DELETE : DELETE : /api/permissions/{id}
+
+
+ministre :
+ADD : POST : /api/aproposministere :{
+  "titrearabe": "وزارة العقارات",
+  "titrefrancais": "Ministère des domaines",
+  "textarabe": "نص عربي",
+  "textfrancais": "Texte français",
+  "image": ""
+}
+( l'image encodée en Base64)
+
+LIST : GET : /api/aproposministere
+UPDATE : PUT : /api/aproposministere/{id} :
+DELETE : DELETE : /api/aproposministere/{id}
+
+
+ministrecontenuassocier
+
+
+ADD : POST : /api/ministerecontenuassocier :
+{
+  "titrearabe": "الرؤية",
+  "titrefrancais": "vision",
+  "textarabe": "نص عربي",
+  "textfrancais": "Texte français"
+}
+
+LIST : GET : /api/ministerecontenuassocier
+UPDATE : PUT : /api/ministerecontenuassocier/{id} :
+DELETE : DELETE : /api/ministerecontenuassocier/{id}
+
+
+leministre :
+
+
+ADD : POST : /api/leministre :
+{
+  "titrearabe": "وزير العقارات",
+  "titrefrancais": "le ministre des Domaines",
+  "textarabe": "نص عربي",
+  "textfrancais": "Texte français",
+  "image": "",
+  "cvarabe": "",
+  "cvfrancais": ""
+}
+( l'image et cv encodées en Base64)
+
+LIST : GET : /api/leministre
+UPDATE : PUT : /api/leministre/{id} :
+DELETE : DELETE : /api/leministre/{id}
+
+
+tachesministere
+
+ADD : POST : /api/tachesministere :
+{
+  "titrearabe": "عنوان المهمة",
+  "titrefrancais": "Tache titre"
+
+}
+
+LIST : GET : /api/tachesministere
+UPDATE : PUT : /api/tachesministere/{id} :
+DELETE : DELETE : /api/tachesministere/{id}
+
+listetaches
+
+ADD : POST : /api/listetaches :
+{ 
+  "tacheid":"1",
+  "titrearabe": "مهمة 1",
+  "titrefrancais": "Tache 1"
+
+}
+
+LIST : GET : /api/listetaches
+LIST BY TAHCE ID : GET : /api/listetaches/bytache/{id} 
+UPDATE : PUT : /api/listetaches/{id} 
+DELETE : DELETE : /api/listetaches/{id}
+
+
+structureadministrative
+
+ADD : POST : /api/structureadministrative :
+{
+  "titrearabe": "الهيكلة الإدارية",
+  "titrefrancais": "Structure Administrative",
+  "fichierarabe":"",
+  "fichierfrancais":""
+}
+(fichie encodée en Base64)
+
+LIST : GET : /api/structureadministrative
+UPDATE : PUT : /api/structureadministrative/{id} :
+DELETE : DELETE : /api/structureadministrative/{id}
+
+
+actualitescategories:
+
+ADD : POST : /api/actualitescategories :
+{
+  "nomarabe": "تصنيف 1",
+  "nomfrancais": "Categorie 1"
+}
+
+LIST : GET : /api/actualitescategories
+UPDATE : PUT : /api/actualitescategories/{id} :
+DELETE : DELETE : /api/actualitescategories/{id}
+
+
+actualites:
+
+ADD : POST : /api/actualites :
+{
+  "titrearabe": "عنوان الخبر بالعربية",
+  "titrefrancais": "Titre de l'actualité en français",
+  "textarabe": "هذا نص الخبر باللغة العربية...",
+  "textfrancais": "Voici le texte de l'actualité en français...",
+  "image": "",  
+  "datepublication": "2025-08-15T10:30:00",
+  "categorieid": 1
+}
+
+
+LIST : GET : /api/actualites
+LIST BY CATEGORIE ID : GET : /api/actualites/bycategorie/{id} 
+UPDATE : PUT : /api/actualites/{id} :
+DELETE : DELETE : /api/actualites/{id}
+
+
+
+annonces:
+
+ADD : POST : /api/annonces :
+{
+  "titrearabe": "إعلان هام",
+  "titrefrancais": "Annonce importante",
+  "textarabe": "هذا نص الإعلان باللغة العربية...",
+  "textfrancais": "Voici le texte de l'annonce en français...",
+  "datepublication": "2025-08-15T12:00:00"
+}
+
+LIST : GET : /api/annonces
+UPDATE : PUT : /api/annonces/{id} :
+DELETE : DELETE : /api/annonces/{id}
+
+
+lois :
+ADD : POST : /api/lois :
+{
+  "titrearabe": "قانون جديد",
+  "titrefrancais": "Nouvelle loi",
+  "datesortie": "2025-08-01",
+  "fichierarabe": "",
+  "fichierfrancais": ""
+}
+(fichier encodée en Base64)
+
+LIST : GET : /api/lois
+UPDATE : PUT : /api/lois/{id} :
+DELETE : DELETE : /api/lois/{id}
+
+
+
+
+
+informations:
+ADD : POST : /api/informations :
+{
+{
+  "nomsite": "Ministère des Domaines",
+  "logo": "", 
+  "adresse": "Rue du Ministère, Nouakchott, Mauritanie",
+  "telephone": "+222 1234 5678",
+  "email": "contact@mre.gov.mr",
+  "horaires": "Lundi - Vendredi : 08h - 16h"
+}
+
+(logo encodée en Base64)
+
+LIST : GET : /api/informations
+UPDATE : PUT : /api/informations/{id} :
+DELETE : DELETE : /api/informations/{id}
+
+
+comptessociaux:
+ADD : POST : /api/comptessociaux :
+{
+  "nom": "Facebook",
+  "lien": "https://www.facebook.com/",
+  "icon": ""
+}
+
+(icon encodée en Base64)
+
+LIST : GET : /api/comptessociaux
+UPDATE : PUT : /api/comptessociaux/{id} :
+DELETE : DELETE : /api/comptessociaux/{id}
+
+
+
+messages:
+ADD : POST : /api/messages :
+{
+  "nom": "Ahmed",
+  "email": "ahmed@example.com",
+  "objet": "Demande d'information",
+  "message": "Bonjour, je voudrais avoir plus de détails sur vos services."
+}
+
+LIST : GET : /api/messages
+UPDATE : PUT : /api/messages/{id} :
+DELETE : DELETE : /api/messages/{id}
