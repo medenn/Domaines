@@ -189,23 +189,7 @@ DELETE : DELETE : /api/lois/{id}
 
 
 
-informations:
-ADD : POST : /api/informations :
-{
-{
-  "nomsite": "Ministère des Domaines",
-  "logo": "", 
-  "adresse": "Rue du Ministère, Nouakchott, Mauritanie",
-  "telephone": "+222 1234 5678",
-  "email": "contact@mre.gov.mr",
-  "horaires": "Lundi - Vendredi : 08h - 16h"
-}
 
-(logo encodée en Base64)
-
-LIST : GET : /api/informations
-UPDATE : PUT : /api/informations/{id} :
-DELETE : DELETE : /api/informations/{id}
 
 
 comptessociaux:
@@ -236,3 +220,66 @@ ADD : POST : /api/messages :
 LIST : GET : /api/messages
 UPDATE : PUT : /api/messages/{id} :
 DELETE : DELETE : /api/messages/{id}
+
+
+
+mise a jour 08/09
+
+
+informations:
+ADD : POST : /api/informations :
+
+{
+  "nomsite": "Ministère des Domaines",
+  "nomsitear": "وزارة العقارات",
+  "logo": "", 
+  "adresse": "Rue du Ministère, Nouakchott, Mauritanie",
+  "adressear": "نواكشوط موريتانيا",
+  "telephone": "+222 1234 5678",
+  "email": "contact@mre.gov.mr",
+  "horaires": "Lun-Ven 9h-18h",
+  "horairesar": "الإثنين-الجمعة ٩ص-٦م"
+}
+
+
+(logo encodée en Base64)
+
+LIST : GET : /api/informations
+UPDATE : PUT : /api/informations/{id} :
+DELETE : DELETE : /api/informations/{id}
+
+
+slides
+
+ADD : POST : /api/slides :
+
+{
+  "titrearabe": "عنوان بالعربية",
+  "titrefrancais": "Titre en français",
+  "textarabe": "نص",
+  "textfrancais": "text",
+  "image": "", 
+  "buttons": [
+    {
+      "titrearabe": "زر ١",
+      "titrefrancais": "Bouton 1",
+      "lien": "https://example.com/page1"
+    },
+    {
+      "titrearabe": "زر ٢",
+      "titrefrancais": "Bouton 2",
+      "lien": "https://example.com/page2"
+    }
+  ]
+}
+
+
+(image encodée en Base64)
+
+LIST : GET : /api/slides
+UPDATE : PUT : /api/slides/{id} :
+DELETE : DELETE : /api/slides/{id}
+
+
+INSERT INTO public.permissions (url_pattern, name, role, methode)
+VALUES ('/api/slides/**', 'PERM_SLIDES', 'ADMIN', '*');

@@ -21,10 +21,13 @@ public class InformationsService {
     public Informations create(InformationsDTO dto) {
         Informations i = new Informations();
         i.setNomsite(dto.getNomsite());
+        i.setNomsitear(dto.getNomsitear());
         i.setAdresse(dto.getAdresse());
+        i.setAdressear(dto.getAdressear());
         i.setTelephone(dto.getTelephone());
         i.setEmail(dto.getEmail());
         i.setHoraires(dto.getHoraires());
+        i.setHorairesar(dto.getHorairesar());
 
         if (dto.getLogo() != null && !dto.getLogo().isEmpty()) {
             byte[] logoBytes = Base64.getDecoder().decode(dto.getLogo());
@@ -39,10 +42,13 @@ public class InformationsService {
                 .orElseThrow(() -> new ResourceNotFoundException("Informations not found with id " + id));
 
         i.setNomsite(dto.getNomsite());
+        i.setNomsitear(dto.getNomsitear());
         i.setAdresse(dto.getAdresse());
+        i.setAdressear(dto.getAdressear());
         i.setTelephone(dto.getTelephone());
         i.setEmail(dto.getEmail());
         i.setHoraires(dto.getHoraires());
+        i.setHorairesar(dto.getHorairesar());
 
         if (dto.getLogo() != null && !dto.getLogo().isEmpty()) {
             byte[] logoBytes = Base64.getDecoder().decode(dto.getLogo());

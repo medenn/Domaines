@@ -13,6 +13,9 @@ public class Informations {
     @Column(name = "nomsite", length = 255)
     private String nomsite;
 
+     @Column(name = "nomsitear", length = 255)
+    private String nomsitear;
+
     @Lob
     @Basic(fetch = FetchType.LAZY)
     @Column(name = "logo")
@@ -20,6 +23,9 @@ public class Informations {
 
     @Column(name = "adresse", length = 500)
     private String adresse;
+
+    @Column(name = "adressear", length = 500)
+    private String adressear;
 
     @Column(name = "telephone", length = 50)
     private String telephone;
@@ -30,16 +36,27 @@ public class Informations {
     @Column(name = "horaires", length = 255)
     private String horaires;
 
+    @Column(name = "horairesar", length = 255)
+    private String horairesar;
+
     public Informations() {}
 
-    public Informations(String nomsite, byte[] logo, String adresse, String telephone, String email, String horaires) {
+   
+
+    public Informations(String nomsite, String nomsitear, byte[] logo, String adresse, String adressear,
+            String telephone, String email, String horaires, String horairesar) {
         this.nomsite = nomsite;
+        this.nomsitear = nomsitear;
         this.logo = logo;
         this.adresse = adresse;
+        this.adressear = adressear;
         this.telephone = telephone;
         this.email = email;
         this.horaires = horaires;
+        this.horairesar = horairesar;
     }
+
+
 
     // Getters & Setters
     public Long getId() { return id; }
@@ -62,4 +79,43 @@ public class Informations {
 
     public String getHoraires() { return horaires; }
     public void setHoraires(String horaires) { this.horaires = horaires; }
+
+
+
+    public String getNomsitear() {
+        return nomsitear;
+    }
+
+
+
+    public void setNomsitear(String nomsitear) {
+        this.nomsitear = nomsitear;
+    }
+
+
+
+    public String getAdressear() {
+        return adressear;
+    }
+
+
+
+    public void setAdressear(String adressear) {
+        this.adressear = adressear;
+    }
+
+
+
+    public String getHorairesar() {
+        return horairesar;
+    }
+
+
+
+    public void setHorairesar(String horairesar) {
+        this.horairesar = horairesar;
+    }
+
+
+    
 }
