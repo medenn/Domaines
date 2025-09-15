@@ -18,6 +18,8 @@ public class SlidesDTO {
     private String textarabe;
     private String textfrancais;
     private String image; // Encodé en Base64
+    private boolean etat;
+    private Integer ordre;
     private List<SlideButtonDTO> buttons;
 
     public static SlidesDTO fromEntity(Slides s) {
@@ -29,6 +31,8 @@ public class SlidesDTO {
                 .textarabe(s.getTextArabe())
                 .textfrancais(s.getTextFrancais())
                 .image(s.getImage() != null ? Base64.getEncoder().encodeToString(s.getImage()) : null)
+                .etat(s.isEtat())
+                .ordre(s.getOrdre())
                 .buttons(s.getButtons() != null
                         ? s.getButtons().stream().map(SlideButtonDTO::fromEntity).collect(Collectors.toList())
                         : null)

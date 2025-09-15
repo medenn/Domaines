@@ -1,6 +1,5 @@
 package win.Domaines.entity;
 
-
 import jakarta.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,22 +12,28 @@ public class Slides {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "titre_arabe", length = 255)
+    @Column(name = "titrearabe", length = 255)
     private String titreArabe;
 
-    @Column(name = "titre_francais", length = 255)
+    @Column(name = "titrefrancais", length = 255)
     private String titreFrancais;
 
-    @Column(name = "text_arabe", columnDefinition = "TEXT")
+    @Column(name = "textarabe", columnDefinition = "TEXT")
     private String textArabe;
 
-    @Column(name = "text_francais", columnDefinition = "TEXT")
+    @Column(name = "textfrancais", columnDefinition = "TEXT")
     private String textFrancais;
 
     @Lob
     @Basic(fetch = FetchType.LAZY)
     @Column(name = "image")
     private byte[] image;
+
+    @Column(name = "etat")
+    private boolean etat;
+
+    @Column(name = "ordre")
+    private Integer ordre;
 
     @OneToMany(mappedBy = "slide", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<SlideButton> buttons = new ArrayList<>();
@@ -62,7 +67,12 @@ public class Slides {
     public byte[] getImage() { return image; }
     public void setImage(byte[] image) { this.image = image; }
 
+    public boolean isEtat() { return etat; }
+    public void setEtat(boolean etat) { this.etat = etat; }
+
+    public Integer getOrdre() { return ordre; }
+    public void setOrdre(Integer ordre) { this.ordre = ordre; }
+
     public List<SlideButton> getButtons() { return buttons; }
     public void setButtons(List<SlideButton> buttons) { this.buttons = buttons; }
 }
-

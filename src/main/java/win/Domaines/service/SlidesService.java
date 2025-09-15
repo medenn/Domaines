@@ -30,13 +30,14 @@ public class SlidesService {
         s.setTitreFrancais(dto.getTitrefrancais());
         s.setTextArabe(dto.getTextarabe());
         s.setTextFrancais(dto.getTextfrancais());
+        s.setEtat(dto.isEtat());
+        s.setOrdre(dto.getOrdre());
 
         if (dto.getImage() != null && !dto.getImage().isEmpty()) {
             byte[] imageBytes = Base64.getDecoder().decode(dto.getImage());
             s.setImage(imageBytes);
         }
 
-        // Mapping des boutons
         if (dto.getButtons() != null) {
             List<SlideButton> buttons = dto.getButtons().stream()
                     .map(b -> {
@@ -62,13 +63,14 @@ public class SlidesService {
         s.setTitreFrancais(dto.getTitrefrancais());
         s.setTextArabe(dto.getTextarabe());
         s.setTextFrancais(dto.getTextfrancais());
+        s.setEtat(dto.isEtat());
+        s.setOrdre(dto.getOrdre());
 
         if (dto.getImage() != null && !dto.getImage().isEmpty()) {
             byte[] imageBytes = Base64.getDecoder().decode(dto.getImage());
             s.setImage(imageBytes);
         }
 
-        // Mise à jour des boutons
         s.getButtons().clear();
         if (dto.getButtons() != null) {
             List<SlideButton> buttons = dto.getButtons().stream()

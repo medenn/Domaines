@@ -259,6 +259,8 @@ ADD : POST : /api/slides :
   "textarabe": "نص",
   "textfrancais": "text",
   "image": "", 
+  "etat": true,
+  "ordre": 1,
   "buttons": [
     {
       "titrearabe": "زر ١",
