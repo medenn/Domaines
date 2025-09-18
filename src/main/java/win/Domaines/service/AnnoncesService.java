@@ -25,6 +25,7 @@ public class AnnoncesService {
         a.setTextarabe(dto.getTextarabe());
         a.setTextfrancais(dto.getTextfrancais());
         a.setDatepublication(dto.getDatepublication());
+        a.setImage(dto.getImage());
         return repository.save(a);
     }
 
@@ -38,6 +39,7 @@ public class AnnoncesService {
         a.setTextarabe(dto.getTextarabe());
         a.setTextfrancais(dto.getTextfrancais());
         a.setDatepublication(dto.getDatepublication());
+        a.setImage(dto.getImage());
         return repository.save(a);
     }
 

@@ -16,6 +16,7 @@ public class AnnoncesDTO {
     private String textarabe;
     private String textfrancais;
     private LocalDateTime datepublication;
+    private byte[] image;
 
     public static AnnoncesDTO fromEntity(Annonces a) {
         return AnnoncesDTO.builder()
@@ -25,6 +26,7 @@ public class AnnoncesDTO {
                 .textarabe(a.getTextarabe())
                 .textfrancais(a.getTextfrancais())
                 .datepublication(a.getDatepublication())
+                .image(a.getImage())
                 .build();
     }
 }

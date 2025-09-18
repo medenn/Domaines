@@ -14,8 +14,10 @@ public class StructureAdministrativeDTO {
     private Long id;
     private String titrearabe;
     private String titrefrancais;
-    private String fichierarabe;   // Encodé Base64
+    private String fichierarabe;    // Encodé Base64
     private String fichierfrancais; // Encodé Base64
+    private String textarabe;
+    private String textfrancais;
 
     public static StructureAdministrativeDTO fromEntity(StructureAdministrative s) {
         return StructureAdministrativeDTO.builder()
@@ -24,6 +26,8 @@ public class StructureAdministrativeDTO {
                 .titrefrancais(s.getTitrefrancais())
                 .fichierarabe(s.getFichierarabe() != null ? Base64.getEncoder().encodeToString(s.getFichierarabe()) : null)
                 .fichierfrancais(s.getFichierfrancais() != null ? Base64.getEncoder().encodeToString(s.getFichierfrancais()) : null)
+                .textarabe(s.getTextArabe())
+                .textfrancais(s.getTextFrancais())
                 .build();
     }
 }

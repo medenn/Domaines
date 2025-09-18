@@ -104,21 +104,6 @@ UPDATE : PUT : /api/listetaches/{id}
 DELETE : DELETE : /api/listetaches/{id}
 
 
-structureadministrative
-
-ADD : POST : /api/structureadministrative :
-{
-  "titrearabe": "الهيكلة الإدارية",
-  "titrefrancais": "Structure Administrative",
-  "fichierarabe":"",
-  "fichierfrancais":""
-}
-(fichie encodée en Base64)
-
-LIST : GET : /api/structureadministrative
-UPDATE : PUT : /api/structureadministrative/{id} :
-DELETE : DELETE : /api/structureadministrative/{id}
-
 
 actualitescategories:
 
@@ -154,21 +139,6 @@ DELETE : DELETE : /api/actualites/{id}
 
 
 
-annonces:
-
-ADD : POST : /api/annonces :
-{
-  "titrearabe": "إعلان هام",
-  "titrefrancais": "Annonce importante",
-  "textarabe": "هذا نص الإعلان باللغة العربية...",
-  "textfrancais": "Voici le texte de l'annonce en français...",
-  "datepublication": "2025-08-15T12:00:00"
-}
-
-LIST : GET : /api/annonces
-UPDATE : PUT : /api/annonces/{id} :
-DELETE : DELETE : /api/annonces/{id}
-
 
 lois :
 ADD : POST : /api/lois :
@@ -184,10 +154,6 @@ ADD : POST : /api/lois :
 LIST : GET : /api/lois
 UPDATE : PUT : /api/lois/{id} :
 DELETE : DELETE : /api/lois/{id}
-
-
-
-
 
 
 
@@ -285,3 +251,115 @@ DELETE : DELETE : /api/slides/{id}
 
 INSERT INTO public.permissions (url_pattern, name, role, methode)
 VALUES ('/api/slides/**', 'PERM_SLIDES', 'ADMIN', '*');
+
+
+mise a jour 17/09
+
+
+menu
+
+ADD : POST : /api/menu :
+
+{
+  "nomarabe": "القائمة 1",
+  "nomfrancais": "Menu1",
+  "lien": "/menu1",
+  "ordre": 2,
+  "etat": true,
+  "parentId": null
+}
+ //Récupérer les sous-menus d’un menu
+GET : /api/menu/sousmenus/{parentId} 
+
+LIST : GET : /api/menu
+UPDATE : PUT : /api/menu/{id} :
+DELETE : DELETE : /api/menu/{id}
+
+
+
+
+annonces:
+
+ADD : POST : /api/annonces :
+{
+  "titrearabe": "إعلان هام",
+  "titrefrancais": "Annonce importante",
+  "textarabe": "هذا نص الإعلان باللغة العربية...",
+  "textfrancais": "Voici le texte de l'annonce en français...",
+  "datepublication": "2025-08-15T12:00:00",
+  "image": "",  // (nouveau)
+}
+(image encodée en Base64)
+
+LIST : GET : /api/annonces
+UPDATE : PUT : /api/annonces/{id} :
+DELETE : DELETE : /api/annonces/{id}
+
+
+
+structureadministrative
+
+ADD : POST : /api/structureadministrative :
+{
+  "titrearabe": "الهيكلة الإدارية",
+  "titrefrancais": "Structure Administrative",
+  "fichierarabe":"",
+  "fichierfrancais":"",
+  "textarabe": "نص", // (nouveau)
+  "textfrancais": "text" // (nouveau)
+}
+(fichie encodée en Base64)
+
+LIST : GET : /api/structureadministrative
+UPDATE : PUT : /api/structureadministrative/{id} :
+DELETE : DELETE : /api/structureadministrative/{id}
+
+
+
+bibliothequecategorie:
+
+ADD : POST : /api/bibliothequecategorie:
+{
+  "nomarabe": "تصنيف 1",
+  "nomfrancais": "Categorie 1"
+}
+
+LIST : GET : /api/bibliothequecategorie
+UPDATE : PUT : /api/bibliothequecategorie/{id} :
+DELETE : DELETE : /api/bibliothequecategorie/{id}
+
+
+bibliotheque
+
+ADD : POST : /api/bibliotheque :
+{
+  "descriptionarabe": "وصف",
+  "descriptionfrancais": "description",
+  "fichiers": [
+    "", 
+    ""
+  ],
+  "categorieId": 1,
+  "ordre": 1,
+  "etat": true
+}
+
+(fichies encodée en Base64)
+
+ //Récupérer bibliothèques liées à une catégorie donnée
+GET : /api/menu/categorie/{categorieId} 
+
+LIST : GET : /api/bibliotheque
+UPDATE : PUT : /api/bibliotheque/{id} :
+DELETE : DELETE : /api/bibliotheque/{id}
+
+
+
+
+
+
+
+"C:\Program Files\PostgreSQL\17\bin\pg_dump.exe" -U postgres -d domaine --data-only --column-inserts > C:\logs\all_tables_inserts.sql
+
+
+"C:\Program Files\PostgreSQL\17\bin\pg_dump.exe" -U postgres -d domaine -t permissions --data-only --column-inserts > C:\logs\permissions_inserts.sql

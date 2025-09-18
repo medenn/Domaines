@@ -22,6 +22,8 @@ public class StructureAdministrativeService {
         StructureAdministrative s = new StructureAdministrative();
         s.setTitrearabe(dto.getTitrearabe());
         s.setTitrefrancais(dto.getTitrefrancais());
+        s.setTextArabe(dto.getTextarabe());
+        s.setTextFrancais(dto.getTextfrancais());
 
         if (dto.getFichierarabe() != null) {
             s.setFichierarabe(Base64.getDecoder().decode(dto.getFichierarabe()));
@@ -39,6 +41,8 @@ public class StructureAdministrativeService {
 
         s.setTitrearabe(dto.getTitrearabe());
         s.setTitrefrancais(dto.getTitrefrancais());
+        s.setTextArabe(dto.getTextarabe());
+        s.setTextFrancais(dto.getTextfrancais());
 
         if (dto.getFichierarabe() != null) {
             s.setFichierarabe(Base64.getDecoder().decode(dto.getFichierarabe()));

@@ -1,3 +1,27 @@
+// jar service
+
+sudo nano /etc/systemd/system/jardomaine.service
+
+[Unit]
+Description=backend DOMAINE
+After=network.target
+
+[Service]
+User=root
+ExecStart=/usr/bin/java -jar /etc/Domainesjar/Domaines.jar
+SuccessExitStatus=143
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+
+sudo systemctl stop jardomaine
+sudo systemctl daemon-reload
+sudo systemctl start jardomaine
+sudo systemctl enable jardomaine
+sudo systemctl status jardomaine
+
+
 spring.application.name=Domaines
 server.port = 8090
 spring.datasource.url= jdbc:postgresql://93.115.16.90:5432/domaine?allowPublicKeyRetrieval=true&useSSL=false

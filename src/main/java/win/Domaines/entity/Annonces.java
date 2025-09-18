@@ -28,7 +28,26 @@ public class Annonces {
     @Column(name = "datepublication")
     private LocalDateTime datepublication;
 
+    @Lob
+    @Basic(fetch = FetchType.LAZY)
+    @Column(name = "image")
+    private byte[] image;
+
     public Annonces() {}
+
+    
+
+    public Annonces(String titrearabe, String titrefrancais, String textarabe, String textfrancais,
+            LocalDateTime datepublication, byte[] image) {
+        this.titrearabe = titrearabe;
+        this.titrefrancais = titrefrancais;
+        this.textarabe = textarabe;
+        this.textfrancais = textfrancais;
+        this.datepublication = datepublication;
+        this.image = image;
+    }
+
+
 
     // Getters & Setters
     public Long getId() { return id; }
@@ -48,4 +67,7 @@ public class Annonces {
 
     public LocalDateTime getDatepublication() { return datepublication; }
     public void setDatepublication(LocalDateTime datepublication) { this.datepublication = datepublication; }
+
+    public byte[] getImage() { return image; }
+    public void setImage(byte[] image) { this.image = image; }
 }

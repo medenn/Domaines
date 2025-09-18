@@ -26,6 +26,12 @@ public class StructureAdministrative {
     @Column(name = "fichierfrancais")
     private byte[] fichierfrancais;
 
+    @Column(name = "textarabe", columnDefinition = "TEXT")
+    private String textArabe;
+
+    @Column(name = "textfrancais", columnDefinition = "TEXT")
+    private String textFrancais;
+
     public StructureAdministrative() {}
 
     public StructureAdministrative(String titrearabe, String titrefrancais, byte[] fichierarabe, byte[] fichierfrancais) {
@@ -49,4 +55,10 @@ public class StructureAdministrative {
 
     public byte[] getFichierfrancais() { return fichierfrancais; }
     public void setFichierfrancais(byte[] fichierfrancais) { this.fichierfrancais = fichierfrancais; }
+
+    public String getTextArabe() { return textArabe; }
+    public void setTextArabe(String textArabe) { this.textArabe = textArabe; }
+
+    public String getTextFrancais() { return textFrancais; }
+    public void setTextFrancais(String textFrancais) { this.textFrancais = textFrancais; }
 }
