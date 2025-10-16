@@ -17,6 +17,7 @@ public class AnnoncesDTO {
     private String textfrancais;
     private LocalDateTime datepublication;
     private byte[] image;
+    
 
     public static AnnoncesDTO fromEntity(Annonces a) {
         return AnnoncesDTO.builder()

@@ -58,4 +58,5 @@ public class AnnoncesService {
     public List<Annonces> getAll() {
         return repository.findAll();
     }
+    
 }

@@ -3,6 +3,7 @@ package win.Domaines.service;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import win.Domaines.dto.LoisDTO;
+import win.Domaines.dto.LoisProjection;
 import win.Domaines.entity.Lois;
 import win.Domaines.repository.LoisRepository;
 
@@ -24,13 +25,9 @@ public class LoisService {
         l.setTitrearabe(dto.getTitrearabe());
         l.setTitrefrancais(dto.getTitrefrancais());
         l.setDatesortie(dto.getDatesortie());
+        l.setFichierarabe(dto.getFichierarabe());
 
-        if (dto.getFichierarabe() != null && !dto.getFichierarabe().isEmpty()) {
-            l.setFichierarabe(Base64.getDecoder().decode(dto.getFichierarabe()));
-        }
-        if (dto.getFichierfrancais() != null && !dto.getFichierfrancais().isEmpty()) {
-            l.setFichierfrancais(Base64.getDecoder().decode(dto.getFichierfrancais()));
-        }
+        l.setFichierfrancais(dto.getFichierfrancais());
 
         return repository.save(l);
     }
@@ -44,12 +41,9 @@ public class LoisService {
         l.setTitrefrancais(dto.getTitrefrancais());
         l.setDatesortie(dto.getDatesortie());
 
-        if (dto.getFichierarabe() != null && !dto.getFichierarabe().isEmpty()) {
-            l.setFichierarabe(Base64.getDecoder().decode(dto.getFichierarabe()));
-        }
-        if (dto.getFichierfrancais() != null && !dto.getFichierfrancais().isEmpty()) {
-            l.setFichierfrancais(Base64.getDecoder().decode(dto.getFichierfrancais()));
-        }
+        l.setFichierarabe(dto.getFichierarabe());
+
+        l.setFichierfrancais(dto.getFichierfrancais());
 
         return repository.save(l);
     }
@@ -65,8 +59,34 @@ public class LoisService {
                 .orElseThrow(() -> new RuntimeException("Lois non trouvée"));
     }
 
+    // 🔹 Version rapide pour getAll
+    @Transactional(readOnly = true)
+    public List<LoisProjection> getAllLight() {
+        return repository.findAllLight();
+    }
+
     @Transactional(readOnly = true)
     public List<Lois> getAll() {
         return repository.findAll();
     }
+    
+
+    @Transactional(readOnly = true)
+    public String getFichierArabeBase64(Long id) {
+        Lois l = repository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Lois non trouvée"));
+        if (l.getFichierarabe() != null)
+            return Base64.getEncoder().encodeToString(l.getFichierarabe());
+        return null;
+    }
+
+    @Transactional(readOnly = true)
+    public String getFichierFrancaisBase64(Long id) {
+        Lois l = repository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Lois non trouvée"));
+        if (l.getFichierfrancais() != null)
+            return Base64.getEncoder().encodeToString(l.getFichierfrancais());
+        return null;
+    }
+
 }

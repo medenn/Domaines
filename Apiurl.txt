@@ -151,7 +151,12 @@ ADD : POST : /api/lois :
 }
 (fichier encodée en Base64)
 
+ //Récupérer les fichiers
+GET : /api/lois/fichierarabe/{id} 
+GET : /api/lois/fichierfrancais/{id} 
+
 LIST : GET : /api/lois
+LIST RAPIDE : GET : /api/lois/rapide
 UPDATE : PUT : /api/lois/{id} :
 DELETE : DELETE : /api/lois/{id}
 
@@ -347,7 +352,7 @@ ADD : POST : /api/bibliotheque :
 (fichies encodée en Base64)
 
  //Récupérer bibliothèques liées à une catégorie donnée
-GET : /api/menu/categorie/{categorieId} 
+GET : /api/bibliotheque/categorie/{categorieId} 
 
 LIST : GET : /api/bibliotheque
 UPDATE : PUT : /api/bibliotheque/{id} :
@@ -363,3 +368,6 @@ DELETE : DELETE : /api/bibliotheque/{id}
 
 
 "C:\Program Files\PostgreSQL\17\bin\pg_dump.exe" -U postgres -d domaine -t permissions --data-only --column-inserts > C:\logs\permissions_inserts.sql
+
+
+

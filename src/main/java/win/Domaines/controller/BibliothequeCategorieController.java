@@ -7,7 +7,7 @@ import win.Domaines.entity.BibliothequeCategorie;
 import win.Domaines.service.BibliothequeCategorieService;
 
 import java.util.List;
-import java.util.stream.Collectors;
+
 
 @RestController
 @RequestMapping("/api/bibliothequecategorie")

@@ -1,13 +1,11 @@
 package win.Domaines.service;
 
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 import win.Domaines.dto.MinistereDTO;
 import win.Domaines.entity.Ministere;
 import win.Domaines.exception.ResourceNotFoundException;
 import win.Domaines.repository.MinistereRepository;
 
-import java.io.IOException;
 import java.util.Base64;
 import java.util.List;
 

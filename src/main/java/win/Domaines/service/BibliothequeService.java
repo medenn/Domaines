@@ -82,21 +82,30 @@ public class BibliothequeService {
         repository.deleteById(id);
     }
 
+ 
+
     @Transactional(readOnly = true)
-    public Bibliotheque getById(Long id) {
-        return repository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Bibliotheque not found"));
+    public List<BibliothequeDTO> getAll() {
+        List<Bibliotheque> bibliotheques = repository.findAllWithFichiers();
+        return bibliotheques.stream()
+                .map(BibliothequeDTO::fromEntity)
+                .collect(Collectors.toList());
     }
 
     @Transactional(readOnly = true)
-    public List<Bibliotheque> getAll() {
-        return repository.findAll();
+    public BibliothequeDTO getById(Long id) {
+        Bibliotheque b = repository.findByIdWithFichiers(id);
+        if (b == null) throw new ResourceNotFoundException("Bibliotheque not found");
+        return BibliothequeDTO.fromEntity(b);
     }
 
     @Transactional(readOnly = true)
-    public List<Bibliotheque> findByBibliothequeCategorie(Long categorieId) {
+    public List<BibliothequeDTO> findByCategorie(Long categorieId) {
         BibliothequeCategorie cat = categorieRepository.findById(categorieId)
                 .orElseThrow(() -> new ResourceNotFoundException("Categorie not found"));
-        return repository.findByCategorie(cat);
+        List<Bibliotheque> bibliotheques = repository.findByCategorieWithFichiers(cat);
+        return bibliotheques.stream()
+                .map(BibliothequeDTO::fromEntity)
+                .collect(Collectors.toList());
     }
 }

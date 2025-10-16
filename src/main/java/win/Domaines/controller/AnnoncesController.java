@@ -51,4 +51,6 @@ public class AnnoncesController {
                 .collect(Collectors.toList());
         return ResponseEntity.ok(list);
     }
+
+    
 }

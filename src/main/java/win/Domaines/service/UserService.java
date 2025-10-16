@@ -5,11 +5,8 @@ import org.springframework.stereotype.Service;
 import win.Domaines.dto.UserDTO;
 import win.Domaines.entity.Role;
 import win.Domaines.entity.User;
-import win.Domaines.exception.ResourceNotFoundException;
 import win.Domaines.repository.RoleRepository;
 import win.Domaines.repository.UserRepository;
-
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;

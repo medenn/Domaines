@@ -15,8 +15,9 @@ public class LoisDTO {
     private String titrearabe;
     private String titrefrancais;
     private LocalDate datesortie;
-    private String fichierarabe; // Base64
-    private String fichierfrancais; // Base64
+    private  byte[] fichierarabe; // Base64
+    private  byte[] fichierfrancais; // Base64
+    
 
     public static LoisDTO fromEntity(Lois l) {
         return LoisDTO.builder()
@@ -24,8 +25,8 @@ public class LoisDTO {
                 .titrearabe(l.getTitrearabe())
                 .titrefrancais(l.getTitrefrancais())
                 .datesortie(l.getDatesortie())
-                .fichierarabe(l.getFichierarabe() != null ? Base64.getEncoder().encodeToString(l.getFichierarabe()) : null)
-                .fichierfrancais(l.getFichierfrancais() != null ? Base64.getEncoder().encodeToString(l.getFichierfrancais()) : null)
+                .fichierarabe(l.getFichierarabe())
+                .fichierfrancais(l.getFichierfrancais())
                 .build();
     }
 }

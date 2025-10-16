@@ -2,7 +2,6 @@ package win.Domaines.service;
 
 import org.springframework.stereotype.Service;
 import win.Domaines.dto.SlidesDTO;
-import win.Domaines.dto.SlideButtonDTO;
 import win.Domaines.entity.Slides;
 import win.Domaines.entity.SlideButton;
 import win.Domaines.exception.ResourceNotFoundException;

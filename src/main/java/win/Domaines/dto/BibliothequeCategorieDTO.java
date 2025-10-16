@@ -3,7 +3,6 @@ package win.Domaines.dto;
 import lombok.*;
 import win.Domaines.entity.BibliothequeCategorie;
 
-import java.util.List;
 
 @Getter
 @Setter
