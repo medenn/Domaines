@@ -344,6 +344,10 @@ ADD : POST : /api/bibliotheque :
     "", 
     ""
   ],
+  "liens": [
+    "https://exemple.com/lien1",
+    "https://exemple.com/lien2"
+  ],
   "categorieId": 1,
   "ordre": 1,
   "etat": true
@@ -357,6 +361,137 @@ GET : /api/bibliotheque/categorie/{categorieId}
 LIST : GET : /api/bibliotheque
 UPDATE : PUT : /api/bibliotheque/{id} :
 DELETE : DELETE : /api/bibliotheque/{id}
+
+
+----- MISE A JOUR 27/11
+
+sousetablissements
+
+ADD : POST : /api/sousetablissements :
+{
+  "titrearabe": "عنوان المؤسسة الفرعية",
+  "titrefrancais": "Titre du sous-établissement",
+  "descarabe": "وصف المؤسسة بالعربية",
+  "descfrancais": "Description du sous-établissement en français",
+  "lien": "https://www.example.com",
+  "logo": ""  // Base64 du logo
+}
+
+
+LIST : GET : /api/sousetablissements
+UPDATE : PUT : /api/sousetablissements/{id} :
+DELETE : DELETE : /api/sousetablissements/{id}
+
+
+
+cabinetministre
+
+ADD : POST : /api/cabinetministre :
+{
+  "titrearabe": "عنوان مكتب الوزير",
+  "titrefrancais": "Titre Cabinet du Ministre",
+  "descarabe": "وصف المكتب بالعربية",
+  "descfrancais": "Description du cabinet en français",
+  "fichier": ""  // Base64 PDF ou autre fichier
+}
+
+
+LIST : GET : /api/cabinetministre
+UPDATE : PUT : /api/cabinetministre/{id} :
+DELETE : DELETE : /api/cabinetministre/{id}
+
+
+videos:
+ADD : POST : /api/videos :
+{
+  "titrearabe": "عنوان الفيديو",
+  "titrefrancais": "Titre de la vidéo",
+  "descarabe": "وصف الفيديو بالعربية",
+  "descfrancais": "Description de la vidéo en français",
+  "fichier": "" ,  // Base64 fichier vidéo
+  "lien": "https://www.youtube.com/"
+}
+
+
+
+LIST : GET : /api/videos
+UPDATE : PUT : /api/videos/{id} :
+DELETE : DELETE : /api/videos/{id}
+
+projets:
+
+ADD : POST : /api/projets :
+{
+  "titrearabe": "عنوان المشروع",
+  "titrefrancais": "Titre du projet",
+  "descarabe": "وصف المشروع بالعربية",
+  "descfrancais": "Description du projet en français",
+  "lien": "https://www.example.com/projet",
+  "images": [
+    {
+      "image": ""  // Base64 image 1
+    },
+    {
+      "image": ""  // Base64 image 2
+    }
+  ]
+}
+
+
+
+LIST : GET : /api/projets
+UPDATE : PUT : /api/projets/{id} :
+DELETE : DELETE : /api/projets/{id}
+
+
+procedures-services:
+
+ADD : POST : /api/procedures-services :
+{
+  "titrearabe": "اجرائات",
+  "titrefrancais": "Procédure ",
+  "textarabe": "وصف",
+  "textfrancais": "Description détaillée de la procédure ",
+  "image": "", 
+  "fichier": ""
+}
+
+
+
+LIST : GET : /api/procedures-services
+UPDATE : PUT : /api/procedures-services/{id} :
+DELETE : DELETE : /api/procedures-services/{id}
+
+
+motministre:
+
+ADD : POST : /api/motministre :
+{
+  "titrearabe": "كلمة الوزير",
+  "titrefrancais": "Mot du Ministre",
+  "textarabe": "هذا هو نص الكلمة بالعربية.",
+  "textfrancais": "Voici le texte du mot en français."
+}
+
+
+
+
+LIST : GET : /api/motministre
+UPDATE : PUT : /api/motministre/{id} :
+DELETE : DELETE : /api/motministre/{id}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

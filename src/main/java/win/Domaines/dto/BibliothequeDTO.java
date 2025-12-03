@@ -18,6 +18,7 @@ public class BibliothequeDTO {
     private String descriptionarabe;
     private String descriptionfrancais;
     private List<String> fichiers; // Base64
+     private List<String> liens;    // URLs
     private Long categorieId;
     private Integer ordre;
     private Boolean etat;
@@ -30,11 +31,20 @@ public class BibliothequeDTO {
                     .collect(Collectors.toList());
         }
 
+        
+        List<String> liensList = null;
+        if (b.getLiens() != null) {
+            liensList = b.getLiens().stream()
+                    .map(l -> l.getUrl())
+                    .collect(Collectors.toList());
+        }
+
         return BibliothequeDTO.builder()
                 .id(b.getId())
                 .descriptionarabe(b.getDescriptionarabe())
                 .descriptionfrancais(b.getDescriptionfrancais())
                 .fichiers(fichiersBase64)
+                .liens(liensList)
                 .categorieId(b.getCategorie() != null ? b.getCategorie().getId() : null)
                 .ordre(b.getOrdre())
                 .etat(b.getEtat())

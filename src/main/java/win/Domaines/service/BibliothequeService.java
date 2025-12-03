@@ -6,6 +6,7 @@ import win.Domaines.dto.BibliothequeDTO;
 import win.Domaines.entity.Bibliotheque;
 import win.Domaines.entity.BibliothequeCategorie;
 import win.Domaines.entity.BibliothequeFichier;
+import win.Domaines.entity.BibliothequeLien;
 import win.Domaines.exception.ResourceNotFoundException;
 import win.Domaines.repository.BibliothequeRepository;
 import win.Domaines.repository.BibliothequeCategorieRepository;
@@ -47,6 +48,14 @@ public class BibliothequeService {
             b.setFichiers(fichiers);
         }
 
+        // Liens
+    if (dto.getLiens() != null) {
+        List<BibliothequeLien> liens = dto.getLiens().stream()
+                .map(url -> new BibliothequeLien(url, b))
+                .collect(Collectors.toList());
+        b.setLiens(liens);
+    }
+
         return repository.save(b);
     }
 
@@ -73,6 +82,15 @@ public class BibliothequeService {
                     .collect(Collectors.toList());
             b.setFichiers(fichiers);
         }
+
+        // Liens
+    if (dto.getLiens() != null) {
+        b.getLiens().clear();
+        List<BibliothequeLien> liens = dto.getLiens().stream()
+                .map(url -> new BibliothequeLien(url, b))
+                .collect(Collectors.toList());
+        b.setLiens(liens);
+    }
 
         return repository.save(b);
     }

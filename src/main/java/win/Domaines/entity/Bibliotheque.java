@@ -22,6 +22,9 @@ public class Bibliotheque {
     @OneToMany(mappedBy = "bibliotheque", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<BibliothequeFichier> fichiers;
 
+    @OneToMany(mappedBy = "bibliotheque", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+private List<BibliothequeLien> liens;
+
     @ManyToOne
     @JoinColumn(name = "categorie_id")
     private BibliothequeCategorie categorie;
@@ -55,4 +58,7 @@ public class Bibliotheque {
 
     public Boolean getEtat() { return etat; }
     public void setEtat(Boolean etat) { this.etat = etat; }
+
+    public List<BibliothequeLien> getLiens() { return liens; }
+public void setLiens(List<BibliothequeLien> liens) { this.liens = liens; }
 }
