@@ -128,7 +128,9 @@ ADD : POST : /api/actualites :
   "textfrancais": "Voici le texte de l'actualité en français...",
   "image": "",  
   "datepublication": "2025-08-15T10:30:00",
-  "categorieid": 1
+  "categorieid": 1,
+  "lienar":'',
+  "lienfr":''
 }
 
 

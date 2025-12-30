@@ -20,6 +20,8 @@ public class ActualitesDTO {
     private String image; // Base64
     private LocalDateTime datepublication;
     private Long categorieid;
+     private String lienar;
+    private String lienfr;
 
     public static ActualitesDTO fromEntity(Actualites a) {
         return ActualitesDTO.builder()
@@ -27,6 +29,8 @@ public class ActualitesDTO {
                 .titrearabe(a.getTitrearabe())
                 .titrefrancais(a.getTitrefrancais())
                 .textarabe(a.getTextarabe())
+                .lienar(a.getLienar())
+                .lienfr(a.getLienfr())
                 .textfrancais(a.getTextfrancais())
                 .image(a.getImage() != null ? Base64.getEncoder().encodeToString(a.getImage()) : null)
                 .datepublication(a.getDatepublication())

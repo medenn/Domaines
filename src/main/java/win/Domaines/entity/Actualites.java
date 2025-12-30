@@ -37,6 +37,13 @@ public class Actualites {
     @JoinColumn(name = "categorieid")
     private ActualitesCategories categorie;
 
+
+     @Column(name = "lienar", length = 255)
+    private String lienar;
+
+    @Column(name = "lienfr", length = 255)
+    private String lienfr;
+
     public Actualites() {}
 
     // Getters & Setters
@@ -63,4 +70,22 @@ public class Actualites {
 
     public ActualitesCategories getCategorie() { return categorie; }
     public void setCategorie(ActualitesCategories categorie) { this.categorie = categorie; }
+
+    public String getLienar() {
+        return lienar;
+    }
+
+    public void setLienar(String lienar) {
+        this.lienar = lienar;
+    }
+
+    public String getLienfr() {
+        return lienfr;
+    }
+
+    public void setLienfr(String lienfr) {
+        this.lienfr = lienfr;
+    }
+
+    
 }

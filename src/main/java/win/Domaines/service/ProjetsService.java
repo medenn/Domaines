@@ -68,14 +68,21 @@ public class ProjetsService {
         repository.deleteById(id);
     }
 
-    @Transactional(readOnly = true)
-    public Projets getById(Long id) {
-        return repository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Projet non trouvé"));
-    }
+   
 
     @Transactional(readOnly = true)
-    public List<Projets> getAll() {
-        return repository.findAll();
+public Projets getById(Long id) {
+    Projets p = repository.findByIdWithImages(id);
+    if (p == null) {
+        throw new RuntimeException("Projet non trouvé");
     }
+    return p;
+}
+
+
+   @Transactional(readOnly = true)
+public List<Projets> getAll() {
+    return repository.findAllWithImages();
+}
+
 }
