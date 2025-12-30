@@ -4,7 +4,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import win.Domaines.dto.ActualitesDTO;
 import win.Domaines.entity.Actualites;
+import win.Domaines.entity.ActualitesCategories;
+import win.Domaines.exception.ResourceNotFoundException;
 import win.Domaines.repository.ActualitesRepository;
+import win.Domaines.repository.ActualitesCategoriesRepository;
 
 import java.util.Base64;
 import java.util.List;
@@ -13,9 +16,11 @@ import java.util.List;
 public class ActualitesService {
 
     private final ActualitesRepository repository;
+    private final ActualitesCategoriesRepository categorieRepository;
 
-    public ActualitesService(ActualitesRepository repository) {
+    public ActualitesService(ActualitesRepository repository, ActualitesCategoriesRepository categorieRepository) {
         this.repository = repository;
+        this.categorieRepository = categorieRepository;
     }
 
     @Transactional
@@ -26,13 +31,21 @@ public class ActualitesService {
         a.setTextarabe(dto.getTextarabe());
         a.setTextfrancais(dto.getTextfrancais());
         a.setDatepublication(dto.getDatepublication());
+        a.setLienar(dto.getLienar());
+        a.setLienfr(dto.getLienfr());
 
         if (dto.getImage() != null && !dto.getImage().isEmpty()) {
             a.setImage(Base64.getDecoder().decode(dto.getImage()));
         }
 
-        // Associer la catégorie si besoin
-        // a.setCategorie(...);
+        // Associer la catégorie
+        if (dto.getCategorieid() != null) {
+            ActualitesCategories categorie = categorieRepository.findById(dto.getCategorieid())
+                    .orElseThrow(() -> new ResourceNotFoundException("Catégorie non trouvée avec l'id " + dto.getCategorieid()));
+            a.setCategorie(categorie);
+        } else {
+            throw new IllegalArgumentException("La catégorie (categorieid) est obligatoire");
+        }
 
         return repository.save(a);
     }
@@ -47,9 +60,18 @@ public class ActualitesService {
         a.setTextarabe(dto.getTextarabe());
         a.setTextfrancais(dto.getTextfrancais());
         a.setDatepublication(dto.getDatepublication());
+        a.setLienar(dto.getLienar());
+        a.setLienfr(dto.getLienfr());
 
         if (dto.getImage() != null && !dto.getImage().isEmpty()) {
             a.setImage(Base64.getDecoder().decode(dto.getImage()));
+        }
+
+        // Mettre à jour la catégorie si fournie
+        if (dto.getCategorieid() != null) {
+            ActualitesCategories categorie = categorieRepository.findById(dto.getCategorieid())
+                    .orElseThrow(() -> new ResourceNotFoundException("Catégorie non trouvée avec l'id " + dto.getCategorieid()));
+            a.setCategorie(categorie);
         }
 
         return repository.save(a);

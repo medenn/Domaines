@@ -46,6 +46,23 @@ public class Actualites {
 
     public Actualites() {}
 
+    
+
+    public Actualites(String titrearabe, String titrefrancais, String textarabe, String textfrancais, byte[] image,
+            LocalDateTime datepublication, ActualitesCategories categorie, String lienar, String lienfr) {
+        this.titrearabe = titrearabe;
+        this.titrefrancais = titrefrancais;
+        this.textarabe = textarabe;
+        this.textfrancais = textfrancais;
+        this.image = image;
+        this.datepublication = datepublication;
+        this.categorie = categorie;
+        this.lienar = lienar;
+        this.lienfr = lienfr;
+    }
+
+
+
     // Getters & Setters
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
